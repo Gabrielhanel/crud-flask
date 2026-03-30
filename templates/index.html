@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>qualquer coisa</title>
+    <title>crud teste flask</title>
 </head>
 <body>
     <h1>
@@ -14,19 +14,26 @@
     </form>
 
     <h1>Lista de tarefas</h1>
-    <ul>
-        {% for task in tasks%}
-        <li>
-            <form action="/update/{{task.id}}" method="post" style="display: inline">
-                <input type="text" name="description" value="{{ task.description}}">
-                <button type="submit"> Atualizar</button>
+    <ul style="list-style: none; padding: 0;">
+        {% for task in tasks %}
+        <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px;">
+
+            <form action="/update/{{task.id}}" method="post" style="display: flex; gap: 5px; flex-grow: 1;">
+                <input type="text" name="description" value="{{ task.description }}" required
+                       style="flex-grow: 1; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;">
+                    Atualizar
+                </button>
             </form>
 
-            <form action="/delete/{{ task.id }}" method="post" style="display: inline;">
-                <button type="submit"> Deletar tarefa</button>
+            <form action="/delete/{{ task.id }}" method="post" style="margin: 0;">
+                <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px;">
+                    Deletar
+                </button>
             </form>
-
         </li>
+        {% else %}
+        <li style="color: #888; font-style: italic;">Sua lista está limpa!</li>
         {% endfor %}
     </ul>
 </body>
