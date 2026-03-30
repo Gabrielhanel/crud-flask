@@ -93,7 +93,7 @@ def delete_task(task_id):
     return redirect('/')
 
 
-# 6. EXECUÇÃO DO SERVIDOR
+# 6.EXECUÇÃO DO SERVIDOR
 # Garante que o servidor só rode se você executar este arquivo diretamente.
 if __name__ == '__main__':
     # Contexto de aplicação: Necessário para o SQLAlchemy interagir com o app fora das rotas.
