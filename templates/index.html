@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>qualquer coisa</title>
+</head>
+<body>
+    <h1>
+        ADICIONAR NOVA TAREFA
+    </h1>
+    <form action="/create" method="post">
+        <input type="text" name="description" required>
+        <button type="submit"> Criar tarefa</button>
+    </form>
+
+    <h1>Lista de tarefas</h1>
+    <ul>
+        {% for task in tasks%}
+        <li>
+            <form action="/update/{{task.id}}" method="post" style="display: inline">
+                <input type="text" name="description" value="{{ task.description}}">
+                <button type="submit"> Atualizar</button>
+            </form>
+
+            <form action="/delete/{{ task.id }}" method="post" style="display: inline;">
+                <button type="submit"> Deletar tarefa</button>
+            </form>
+
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
